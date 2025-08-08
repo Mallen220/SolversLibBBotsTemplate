@@ -2,11 +2,11 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
-import com.seattlesolvers.solverslib.hardware.motors.CRServo;
+import com.seattlesolvers.solverslib.hardware.motors.CRServo; // Notice how this is solverslib and not hardware!
 
 import org.firstinspires.ftc.teamcode.Constants;
 
-public class HorizontalExtension extends SubsystemBase {
+public class HorizontalExtension { // This class has a very small but critical change. Can you fix it?
   private final CRServo rightExtensionServo;
   private final CRServo leftExtensionServo;
 
@@ -14,9 +14,9 @@ public class HorizontalExtension extends SubsystemBase {
   private final double MIN_POWER = -1;
 
   public HorizontalExtension(HardwareMap hwMap) {
-    rightExtensionServo = new CRServo(hwMap, Constants.HorizontalConstants.RIGHT_EXTENSION_ID);
-    leftExtensionServo = new CRServo(hwMap, Constants.HorizontalConstants.LEFT_EXTENSION_ID);
-    rightExtensionServo.setInverted(true);
+    rightExtensionServo = ... //Constants.HorizontalConstants.RIGHT_EXTENSION_ID
+    leftExtensionServo = .. //Constants.HorizontalConstants.LEFT_EXTENSION_ID
+    rightExtensionServo.; // Invert this servo
   }
 
   public void setPower(double power) {
@@ -35,6 +35,6 @@ public class HorizontalExtension extends SubsystemBase {
   }
 
   public void stopServos() {
-    setPower(0);
+    //FIXME: Stop the servos!
   }
 }

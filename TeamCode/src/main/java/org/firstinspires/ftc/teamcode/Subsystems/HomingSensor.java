@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 import org.firstinspires.ftc.teamcode.Constants;
 
-public class HomingSensor extends SubsystemBase {
+public class HomingSensor extends SubsystemBase { //This class has not been changed. It is very simple.
   private final TouchSensor homingSensor;
 
   private final HardwareMap hwMap;
