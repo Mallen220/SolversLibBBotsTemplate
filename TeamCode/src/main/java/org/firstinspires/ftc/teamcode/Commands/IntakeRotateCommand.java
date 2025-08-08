@@ -17,30 +17,33 @@ public class IntakeRotateCommand extends CommandBase {
   public IntakeRotateCommand(Intake intake, GamepadEx gamepad) {
     this.intake = intake;
     this.gamepad = gamepad;
-    addRequirements((Subsystem) intake);
+    addRequirements(...);
   }
 
   public void initialize() {
     intake.goToPositionFlip(
         Constants.IntakePosition
             .FLIP_TRANSFER_POSITION); // Initialize intake to flip transfer position
+    // Is this correct? Should we set the position here? Could this lead to an issue?
+    // If it's wrong, we can remove this line. Otherwise, we can keep it.
+    // Justify this decision in a comment or two please.
   }
 
   @Override
   public void execute() {
     if (!isWithinTolerance(0, gamepad.getRightX(), tolerance)) {
-      intake.rotateIntake(gamepad.getRightX());
+      ... // What should we do here? Should we rotate the intake based on the joystick input? Look at the old code for reference.
     } else {
-      intake.stopRotate();
+      ... // If the joystick isn't moved, what should we do?
     }
   }
 
   public void end(boolean interrupted) {
-    intake.stopRotate(); // Stop the rotation when the command ends
+    // We need something here (or we will break the bot). Consider the state of the intake when this command ends.
   }
 
   @Override
   public boolean isFinished() {
-    return false; // This command runs until explicitly stopped
+    return false; // Why is this return false? What might that be indicative of?
   }
 }

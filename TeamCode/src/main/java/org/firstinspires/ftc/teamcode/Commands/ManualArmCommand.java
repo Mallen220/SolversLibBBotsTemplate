@@ -7,6 +7,11 @@ import com.seattlesolvers.solverslib.command.Subsystem;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 import org.firstinspires.ftc.teamcode.Subsystems.VerticalArm;
 
+/*
+* This command was left unchanged as it is logically outdated and therefore flawed.
+* It is intended to demonstrate manual control of the arm using a gamepad.
+* It might work well as a default command?? I wonder where/how??
+*/
 public class ManualArmCommand extends CommandBase {
   private final VerticalArm arm;
   private final GamepadEx gamepad;

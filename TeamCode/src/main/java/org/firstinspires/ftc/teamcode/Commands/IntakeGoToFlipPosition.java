@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 public class IntakeGoToFlipPosition extends InstantCommand {
 
   public IntakeGoToFlipPosition(Intake arm, IntakePosition position) {
-    arm.goToPositionFlip(position);
-    addRequirements((Subsystem) arm);
+    ... // A single line of code is enough here.
+    addRequirements((Subsystem) ...);
   }
 }

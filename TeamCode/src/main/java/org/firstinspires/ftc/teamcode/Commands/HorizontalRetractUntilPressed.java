@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Commands;
 
 import com.seattlesolvers.solverslib.command.CommandBase;
+import com.seattlesolvers.solverslib.command.Subsystem;
+
 import org.firstinspires.ftc.teamcode.Subsystems.HomingSensor;
 import org.firstinspires.ftc.teamcode.Subsystems.HorizontalExtension;
 
@@ -11,21 +13,21 @@ public class HorizontalRetractUntilPressed extends CommandBase {
   public HorizontalRetractUntilPressed(HorizontalExtension horizontal, HomingSensor sensor) {
     this.horizontal = horizontal;
     this.sensor = sensor;
-    addRequirements(horizontal);
+    addRequirements((Subsystem) ...);
   }
 
   @Override
   public void initialize() {
-    horizontal.retract();
+    ... // Do something here!
   }
 
   @Override
   public boolean isFinished() {
-    return sensor.isPressed();
+    // When does this command finish? There is a specific condition that needs to be met.
   }
 
   @Override
   public void end(boolean interrupted) {
-    horizontal.stopServos();
+    //When the condition is met, what should happen? If nothing, leave this empty. If empty then you're wrong.
   }
 }
