@@ -7,6 +7,11 @@ import com.seattlesolvers.solverslib.controller.PIDController;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Constants.*;
 
+/*This class was heavily modified to use PID control for the vertical arm movement.
+It is not configured to use encoders, but it can be easily adapted to do so. The PID
+controller is used to control the arm's position based on the desired goal position.
+The PID is not tuned right now so is considered dangerous to run without tuning first.
+The is also an option to turn PID on or off. */
 public class VerticalArm extends SubsystemBase {
 
   private final DcMotor leftArm;
@@ -19,24 +24,23 @@ public class VerticalArm extends SubsystemBase {
     leftArm = hwMap.dcMotor.get(Constants.ArmConstants.LEFT_ARM_ID);
     rightArm = hwMap.dcMotor.get(Constants.ArmConstants.RIGHT_ARM_ID);
 
-    leftArm.setDirection(DcMotor.Direction.REVERSE);
+    leftArm.; // Invert this motor
 
-    leftArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    rightArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    leftArm.; // Brake when power is set to zero?? Or should it do something else?
+    rightArm.; // Brake when power is set to zero?? Or should it do something else?
 
     resetEncoders();
-//    setRunWithoutEncoder();
 
     // Initialize PID controller with gains from constants
     pidController =
-        new PIDController(ArmConstants.ARM_KP, ArmConstants.ARM_KI, ArmConstants.ARM_KD);
-    pidController.setTolerance(ArmConstants.PID_TOLERANCE);
+        new PIDController(ArmConstants.ARM_KP, ArmConstants.ARM_KI, ArmConstants.ARM_KD); //TODO: Configure PID gains!!
+    pidController.setTolerance(ArmConstants.PID_TOLERANCE); // Tune this!
   }
 
   private void resetEncoders() {
     leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//    setRunWithoutEncoder();
+    // setRunWithoutEncoder();
   }
 
   private void setRunWithoutEncoder() {
@@ -53,12 +57,12 @@ public class VerticalArm extends SubsystemBase {
 
   public void stop() {
     isPidActive = false;
-    leftArm.setPower(0);
-    rightArm.setPower(0);
+    leftArm.; // How do we stop the left arm?
+    rightArm.; // How do we stop the right arm?
   }
 
   @Override
-  public void periodic() {
+  public void periodic() { // You likely won't need to change this method. It is untested though so be careful!
     if (isPidActive) {
       double currentPosition = getPosition();
 
@@ -73,7 +77,7 @@ public class VerticalArm extends SubsystemBase {
       setArmPowers(power);
 
       // Stop PID when target is reached
-      if (pidController.atSetPoint()) {
+      if (pidController.atSetPoint()) { // Automatically checks if the current position is within the tolerance of the set point
         stop();
       }
     }

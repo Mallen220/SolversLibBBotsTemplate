@@ -23,13 +23,13 @@ public class ToggleOuttakeClawCommand extends CommandBase {
   public void execute() {
     switch (initialPosition) {
       case OPEN_POSITION:
-        claw.closeClaw();
+        ...
         break;
       case CLOSE_POSITION:
-        claw.openClaw(); // Not needed because of default case, but included for clarity.
+        ... // Not needed because of default case, but included for clarity.
         break;
       default:
-        claw.openClaw();
+        ...
         break;
     }
     new WaitCommand( // TODO: Test wait time

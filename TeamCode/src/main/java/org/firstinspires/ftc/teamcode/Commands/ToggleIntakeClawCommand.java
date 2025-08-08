@@ -6,41 +6,41 @@ import com.seattlesolvers.solverslib.command.WaitCommand;
 import org.firstinspires.ftc.teamcode.Constants.IntakePosition;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake;
 
-public class ToggleIntakeClawCommand extends CommandBase {
+public class ToggleIntakeClawCommand extends CommandBase { // Use ToggleOuttakeClawCommand as an example for this!!
   private final Intake claw;
   private IntakePosition initialPosition;
 
   public ToggleIntakeClawCommand(Intake claw) {
-    this.claw = claw;
-    addRequirements((Subsystem) claw);
+    this.claw = ...;
+    addRequirements(...);
   }
 
   public void initialize() {
-    initialPosition = claw.getGoalPositionClaw();
+    ...
   }
 
   @Override
   public void execute() {
     switch (initialPosition) {
-      case CLAW_OPEN_POSITION:
-        claw.closeClaw();
+      case ... // What are the possible positions for the intake claw?:
+        ...
         break;
-      case CLAW_CLOSE_POSITION:
-        claw.openClaw(); // Not needed because of default case, but included for clarity.
+      case ...:
+        ... // Not needed because of default case, but included for clarity.
         break;
       default:
-        claw.openClaw();
+        ...
         break;
     }
     new WaitCommand( // TODO: Test wait time
-        100); // Wait for 100 milliseconds to allow the claw to move. Acts as a debounce.
+            ...);
   }
 
   public void end(boolean interrupted) {
-    // No specific action needed on end
+    // What should happen when the command ends? If nothing, leave this empty.
   }
 
   public boolean isFinished() {
-    return true; // This command runs just once
+   /* When is this done? If this command runs just once, return true. It it never ends return false. */
   }
 }

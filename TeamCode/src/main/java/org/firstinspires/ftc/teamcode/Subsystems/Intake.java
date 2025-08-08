@@ -8,7 +8,7 @@ import com.seattlesolvers.solverslib.command.SubsystemBase;
 import org.firstinspires.ftc.teamcode.Constants.IntakeConstants;
 import org.firstinspires.ftc.teamcode.Constants.IntakePosition;
 
-public class Intake extends SubsystemBase {
+public class Intake extends SubsystemBase { // This class was left mostly unchanged. You might need to add more methods or change the existing ones to suit your needs.
 
   private IntakePosition goalPositionClaw;
   private IntakePosition goalPositionFlip;
@@ -19,7 +19,6 @@ public class Intake extends SubsystemBase {
   public Intake(final HardwareMap hwMap) {
     clawIntakeServo = hwMap.get(Servo.class, IntakeConstants.CLAW_INTAKE_SERVO_ID);
     intakeFlipServo = hwMap.get(Servo.class, IntakeConstants.INTAKE_FLIP_SERVO_ID);
-    // intakeFlipServo.setDirection(Servo.Direction.REVERSE);
     clawIntakeServo.setDirection(Servo.Direction.REVERSE);
     clawRotationServo = hwMap.get(CRServo.class, IntakeConstants.CLAW_ROTATION_SERVO_ID);
     clawRotationServo.setDirection(DcMotorSimple.Direction.REVERSE);

@@ -6,7 +6,7 @@ import com.seattlesolvers.solverslib.hardware.motors.CRServo; // Notice how this
 
 import org.firstinspires.ftc.teamcode.Constants;
 
-public class HorizontalExtension { // This class has a very small but critical change. Can you fix it?
+public class HorizontalExtension { // This class has a very small but critical change here. Can you fix it?
   private final CRServo rightExtensionServo;
   private final CRServo leftExtensionServo;
 

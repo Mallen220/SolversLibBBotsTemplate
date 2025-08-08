@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 import org.firstinspires.ftc.teamcode.Constants.*;
 
-public class Outtake extends SubsystemBase {
+public class Outtake extends SubsystemBase { // This class was left mostly unchanged. You might need to add more methods or change the existing ones to suit your needs.
 
   private final double MAX_POSITION = 1;
   private final double MIN_POSITION = 0;

@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.OuttakeArm;
 public class OuttakeArmToPosition extends InstantCommand {
 
   public OuttakeArmToPosition(OuttakeArm arm, OuttakeArmPosition position) {
-    arm.goToPosition(position);
-    addRequirements((Subsystem) arm);
+    ... // Do somethings here. 1 line of code is enough.
+    addRequirements(...);
   }
 }

@@ -4,7 +4,7 @@ import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
 import com.seattlesolvers.solverslib.command.Subsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 
-public class ResetHeading extends SequentialCommandGroup {
+public class ResetHeading extends SequentialCommandGroup { // No changes needed here.
   private final Drivetrain drive;
 
   public ResetHeading(Drivetrain drive) {
