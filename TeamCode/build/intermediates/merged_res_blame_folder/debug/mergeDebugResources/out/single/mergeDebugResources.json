@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/matthew/.gradle/daemon/8.9/org.firstinspires.ftc.teamcode.TeamCode-debug-19:/xml_teamwebcamcalibrations.xml.flat",
+        "source": "/Users/matthew/.gradle/daemon/8.9/org.firstinspires.ftc.teamcode.TeamCode-main-21:/xml/teamwebcamcalibrations.xml"
+    },
+    {
+        "merged": "/Users/matthew/.gradle/daemon/8.9/org.firstinspires.ftc.teamcode.TeamCode-debug-19:/raw_readme.md.flat",
+        "source": "/Users/matthew/.gradle/daemon/8.9/org.firstinspires.ftc.teamcode.TeamCode-main-21:/raw/readme.md"
+    },
+    {
+        "merged": "org.firstinspires.ftc.teamcode.TeamCode-debug-19:/xml_teamwebcamcalibrations.xml.flat",
+        "source": "org.firstinspires.ftc.teamcode.TeamCode-main-21:/xml/teamwebcamcalibrations.xml"
+    },
+    {
+        "merged": "org.firstinspires.ftc.teamcode.TeamCode-debug-19:/raw_readme.md.flat",
+        "source": "org.firstinspires.ftc.teamcode.TeamCode-main-21:/raw/readme.md"
+    }
+]
