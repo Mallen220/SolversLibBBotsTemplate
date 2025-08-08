@@ -4,10 +4,10 @@ import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
 import com.seattlesolvers.solverslib.command.WaitCommand;
 import org.firstinspires.ftc.teamcode.Commands.AutoCommands.DriveBackward;
 import org.firstinspires.ftc.teamcode.Commands.AutoCommands.DriveForward;
+import org.firstinspires.ftc.teamcode.Commands.AutoCommands.DriveStrafeLeft;
 import org.firstinspires.ftc.teamcode.Commands.AutoCommands.DriveStrafeRight;
 import org.firstinspires.ftc.teamcode.Commands.AutoCommands.RotateLeft;
 import org.firstinspires.ftc.teamcode.Commands.AutoCommands.RotateRight;
-import org.firstinspires.ftc.teamcode.Commands.AutonomousScoreSpecimen;
 import org.firstinspires.ftc.teamcode.Commands.HorizontalRetractUntilPressed;
 import org.firstinspires.ftc.teamcode.Commands.IntakeGoToFlipPosition;
 import org.firstinspires.ftc.teamcode.Commands.OuttakeArmToPosition;
@@ -41,7 +41,7 @@ public class ScoreSpecimenAuto extends SequentialCommandGroup {
         new DriveBackward(drive, 50),
         new DriveStrafeRight(drive, 54),
         new RotateRight(drive, 2),
-        new AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 65),
+        new DriveStrafeLeft.AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 65),
 
         // score second specimen
         new DriveForward(drive, 20),
@@ -57,6 +57,6 @@ public class ScoreSpecimenAuto extends SequentialCommandGroup {
         new DriveBackward(drive, 30),
         new DriveStrafeRight(drive, 54),
         new RotateRight(drive, 1),
-        new AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 90));
+        new DriveStrafeLeft.AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 90));
   }
 }
