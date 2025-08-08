@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.RobotContainer;
 import org.firstinspires.ftc.teamcode.RobotContainer.AutoMode;
 
-public class AutoChooser extends CommandBase {
+public class AutoChooser extends CommandBase { // Note that I'm still working on this. It does not work yet. Feel free to mess around with it.
 
   private AutoMode[] modes = AutoMode.values();
   ;

@@ -41,7 +41,7 @@ public class ScoreSpecimenAuto extends SequentialCommandGroup {
         new DriveBackward(drive, 50),
         new DriveStrafeRight(drive, 54),
         new RotateRight(drive, 2),
-        new DriveStrafeLeft.AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 65),
+        new AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 65),
 
         // score second specimen
         new DriveForward(drive, 20),
@@ -57,6 +57,6 @@ public class ScoreSpecimenAuto extends SequentialCommandGroup {
         new DriveBackward(drive, 30),
         new DriveStrafeRight(drive, 54),
         new RotateRight(drive, 1),
-        new DriveStrafeLeft.AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 90));
+        new AutonomousScoreSpecimen(drive, outtakeArm, outtake, verticalArm, 90));
   }
 }

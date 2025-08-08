@@ -5,6 +5,9 @@ import com.seattlesolvers.solverslib.command.SequentialCommandGroup;
 import com.seattlesolvers.solverslib.command.WaitCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 
+/*
+ * Not changed, this is an example and should not be used next season.
+ */
 public class RotateRight extends SequentialCommandGroup {
   public RotateRight(Drivetrain drive, long time) {
     addCommands(
