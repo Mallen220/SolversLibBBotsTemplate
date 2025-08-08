@@ -12,7 +12,7 @@ import com.seattlesolvers.solverslib.pedroCommand.FollowPathCommand;
 import java.util.ArrayList;
 
 @Autonomous
-public class FollowPedroSample extends CommandOpMode {
+public class FollowPedroSample extends CommandOpMode { // README:  This is a sample autonomous op mode, I didn't make it but you should check it out!
   Follower follower = new Follower(hardwareMap);
   private final ArrayList<PathChain> paths = new ArrayList<>();
   PathChain pathChain = new PathChain();

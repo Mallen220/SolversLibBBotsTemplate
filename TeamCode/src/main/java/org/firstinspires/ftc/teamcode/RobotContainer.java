@@ -101,16 +101,16 @@ public class RobotContainer {
     initializeSubsystems();
 
     // Default commands
-    drive.setDefaultCommand(new DriveCommand(drive, gamepad1));
-    verticalArm.setDefaultCommand(new ManualArmCommand(verticalArm, gamepad2));
-    intake.setDefaultCommand(new IntakeRotateCommand(intake, gamepad2));
-    horizontal.setDefaultCommand(new HorizontalDefaultCommand(horizontal, homingSensor, gamepad1));
+    drive.setDefaultCommand(/* Default Drive Command */);
+    verticalArm.setDefaultCommand(/* Manual Arm Command */);
+    intake.setDefaultCommand(/* Intake Rotate Command */);
+    horizontal.setDefaultCommand(/* Horizontal Default Command (horizontal, homingSensor, gamepad1) */);
 
     // Button bindings
     configureButtonBindings();
   }
 
-  public void configureAuto() { //Note that I'm still working on this. It does not work yet.
+  public void configureAuto() { //Note that I'm still working on this. It does not work yet. Feel free to mess with it.
     currentGameMode = gameMode.Auto;
     initializeSubsystems();
     startAutoChooser();
@@ -118,35 +118,19 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // Gamepad 1 buttons
-    new GamepadButton(gamepad1, GamepadKeys.Button.Y)
-        .whenPressed(
-            new IntakeGoToFlipPosition(intake, Constants.IntakePosition.FLIP_TRANSFER_POSITION));
-    new GamepadButton(gamepad1, GamepadKeys.Button.A)
-        .whenPressed(
-            new IntakeGoToFlipPosition(intake, Constants.IntakePosition.FLIP_PICKUP_POSITION));
-    new GamepadButton(gamepad1, GamepadKeys.Button.B)
-        .whenPressed(new InstantCommand(() -> intake.closeClaw()));
-    new GamepadButton(gamepad1, GamepadKeys.Button.X)
-        .whenPressed(new InstantCommand(() -> intake.openClaw()));
+    // TODO: Y should go to Flip transfer position
+    // TODO: A should go to Flip pickup position
+    // TODO: B should close the claw
+    // TODO: X should open the claw
 
     // Gamepad 2 buttons
-    new GamepadButton(gamepad2, GamepadKeys.Button.B).whenPressed(new ResetHeading(drive));
-    new GamepadButton(gamepad2, GamepadKeys.Button.LEFT_BUMPER)
-        .whenPressed(new ToggleOuttakeClawCommand(outtake));
-    new GamepadButton(gamepad2, GamepadKeys.Button.DPAD_UP)
-        .whenPressed(
-            new OuttakeArmToPosition(
-                outtakeArm, Constants.OuttakeArmPosition.SCORE_HIGH_BUCKET_POSITION));
-    new GamepadButton(gamepad2, GamepadKeys.Button.DPAD_LEFT)
-        .whenPressed(
-            new OuttakeArmToPosition(outtakeArm, Constants.OuttakeArmPosition.TRANSFER_POSITION));
-    new GamepadButton(gamepad2, GamepadKeys.Button.DPAD_RIGHT)
-        .whenPressed(
-            new OuttakeArmToPosition(
-                outtakeArm, Constants.OuttakeArmPosition.GO_TO_HIGH_BAR_POSITION));
-    new GamepadButton(gamepad2, GamepadKeys.Button.DPAD_DOWN)
-        .whenPressed(
-            new OuttakeArmToPosition(outtakeArm, Constants.OuttakeArmPosition.PICKUP_POSITION));
+    // TODO: B should reset the heading
+    // TODO: Left Bumper should toggle the outtake claw
+    // TODO: D-Pad Up should go to score high bucket position
+    // TODO: D-Pad Left should go to transfer position
+    // TODO: D-Pad Right should go to high bar position
+    // TODO: D-Pad Down should go to pickup position
+
   }
 
   public void startAutoChooser() { //Note that I'm still working on this. It does not work yet.
@@ -179,18 +163,10 @@ public class RobotContainer {
 
   public void run() {
     // telemetry
-    telemetry.addData("Left Arm Position: ", verticalArm.getCurrentPosition()[0]);
-    telemetry.addData("Right Arm Position: ", verticalArm.getCurrentPosition()[1]);
-    telemetry.addData("touchSensorPressed: ", homingSensor.isPressed());
-    telemetry.addData(
-        "Arm Height IN: ",
-        Utils.ticksToInches(
-            verticalArm.getCurrentPosition()[0],
-            Constants.ArmConstants.ARM_BELT_LENGTH,
-            1)); // No gear ratio
+    telemetry.addData(/* Add any data you want in this section! This will run periodically */);
     telemetry.update();
 
-    if (currentGameMode == gameMode.TeleOp) {
+    if (currentGameMode == gameMode.TeleOp) { // This is how we read the gamepad inputs in TeleOp mode.
       gamepad1.readButtons();
       gamepad2.readButtons();
     }

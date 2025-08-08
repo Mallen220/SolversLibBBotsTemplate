@@ -32,7 +32,7 @@ public class Constants {
     GO_TO_HIGH_BAR(1100),
     SCORE_HIGH_BUCKET(3200),
     // GO_TO_HIGH_BAR(2200),
-    SCORE_HIGH_BAR(200); // TODO: check value (could be not-updated)
+    SCORE_HIGH_BAR(200);
 
     public final int encoderTicks;
 
