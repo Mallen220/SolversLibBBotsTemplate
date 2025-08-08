@@ -28,23 +28,24 @@ public class Drivetrain extends SubsystemBase {
     this.hwMap = hwMap;
 
     frontLeftMotor = new Motor(hwMap, Constants.DriveConstants.FRONT_LEFT_MOTOR_ID);
-    backLeftMotor = new Motor(hwMap, Constants.DriveConstants.BACK_LEFT_MOTOR_ID);
-    frontRightMotor = new Motor(hwMap, Constants.DriveConstants.FRONT_RIGHT_MOTOR_ID);
-    backRightMotor = new Motor(hwMap, Constants.DriveConstants.BACK_RIGHT_MOTOR_ID);
+    backLeftMotor = ...;
+    frontRightMotor = ...;
+    backRightMotor = ...;
 
-    frontLeftMotor.setInverted(true);
-    backLeftMotor.setInverted(true);
+    frontLeftMotor.; //Invert this motor!
+    backLeftMotor.; //Invert this motor!
 
-    frontLeftMotor.setRunMode(Motor.RunMode.RawPower); // Let's use encoders for odometry
-    frontRightMotor.setRunMode(Motor.RunMode.RawPower); // Let's use encoders for odometry
-    backLeftMotor.setRunMode(Motor.RunMode.RawPower); // Let's use encoders for odometry
-    backRightMotor.setRunMode(Motor.RunMode.RawPower); // Let's use encoders for odometry
+    frontLeftMotor.setRunMode(Motor.RunMode.); // Set the run mode for the motors! Read the docs if you don't know what this is or what to do here!
+    frontRightMotor.;
+    backLeftMotor.;
+    backRightMotor.;
 
     // Retrieve the IMU from the hardware map
-    revIMU = new RevIMU(hwMap, Constants.DriveConstants.IMU_ID);
+    revIMU = new RevIMU(...); // Constants.DriveConstants.IMU_ID
 
-    revIMU.init(); // FIXME:  The orientation is very likely wrong. Needs tested.
+    revIMU.init(); // FIXME: The orientation is very likely wrong. Needs tested.
 
+    /* Old parameters settings */
     // Adjust the orientation parameters to match your robot
     //    IMU.Parameters parameters =
     //        new IMU.Parameters(
@@ -52,16 +53,18 @@ public class Drivetrain extends SubsystemBase {
     //                RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
     //                RevHubOrientationOnRobot.UsbFacingDirection.BACKWARD));
 
-    drive = new MecanumDrive(frontLeftMotor, frontRightMotor, backLeftMotor, backRightMotor);
+    drive = new MecanumDrive(...); // Read the docs
   }
 
   public void resetYaw() {
-    revIMU.reset();
-    fieldHeadingOffset = 0.0; // Reset the field heading offset
+    // FIXME: We need to do 2 things here!
+    // 1. Reset the IMU's heading to 0
+    // 2. Reset our class variable to 0
   }
 
   public double getBotHeading() { // Returns the robot's heading in radians
-    return revIMU.getHeading() - fieldHeadingOffset;
+
+    // FIXME: This should be the imu's heading minus the class variable offset
   }
 
   public void setFieldHeadingOffset(final double newOffset) {
@@ -76,7 +79,7 @@ public class Drivetrain extends SubsystemBase {
    * @param bLPower = backLeft speed, -1 to 1
    * @param bRPower = backRight speed, -1 to 1
    */
-  public void setPowers(double fLPower, double fRPower, double bLPower, double bRPower) {
+  public void setPowers(double fLPower, double fRPower, double bLPower, double bRPower) { //This is an old method, left here for reference but not used.
 
     frontLeftMotor.set(fLPower);
     frontRightMotor.set(fRPower);
@@ -84,11 +87,8 @@ public class Drivetrain extends SubsystemBase {
     backRightMotor.set(bRPower);
   }
 
-  public void stopMotors() {
-    frontLeftMotor.stopMotor();
-    frontRightMotor.stopMotor();
-    backRightMotor.stopMotor();
-    backLeftMotor.stopMotor();
+  public void stopMotors() { // Stops all motors
+    //FIXME: Stop all motors
   }
 
   public void driveRobotCentric(GamepadEx Controller) {
@@ -113,7 +113,7 @@ public class Drivetrain extends SubsystemBase {
     //        /___________/
 
     // optional fourth parameter for squared inputs
-    drive.driveRobotCentric(strafe, forward, rotate, false);
+    drive.driveRobotCentric(...); // FIXME: Look at the MecanumDrive docs to see what parameters you need to pass in here.
   }
 
   public void driveFieldCentric(GamepadEx Controller) {
@@ -138,9 +138,9 @@ public class Drivetrain extends SubsystemBase {
 
     // optional fifth parameter for squared inputs
     drive.driveFieldCentric(
-        strafe,
-        forward,
-        rotate,
+        ..., // FIXME: Look at the MecanumDrive docs to see what parameters you need to pass in here.
+        ...,
+        ...,
         revIMU.getRotation2d().getDegrees(), // gyro value passed in here must be in degrees
         false);
   }
