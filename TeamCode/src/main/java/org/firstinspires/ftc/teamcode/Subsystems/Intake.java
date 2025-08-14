@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
+import com.seattlesolvers.solverslib.hardware.ServoEx;
+import com.seattlesolvers.solverslib.hardware.SimpleServo;
+import com.seattlesolvers.solverslib.hardware.motors.CRServo;
+
 import org.firstinspires.ftc.teamcode.Constants.IntakeConstants;
 import org.firstinspires.ftc.teamcode.Constants.IntakePosition;
 
@@ -12,20 +14,21 @@ public class Intake extends SubsystemBase { // This class was left mostly unchan
 
   private IntakePosition goalPositionClaw;
   private IntakePosition goalPositionFlip;
-  private final Servo clawIntakeServo;
-  private final Servo intakeFlipServo;
+  private final ServoEx clawIntakeServo;
+  private final ServoEx intakeFlipServo;
   private final CRServo clawRotationServo;
+  private final double minDegree = 0, maxDegree = 0;
 
   public Intake(final HardwareMap hwMap) {
-    clawIntakeServo = hwMap.get(Servo.class, IntakeConstants.CLAW_INTAKE_SERVO_ID);
-    intakeFlipServo = hwMap.get(Servo.class, IntakeConstants.INTAKE_FLIP_SERVO_ID);
-    clawIntakeServo.setDirection(Servo.Direction.REVERSE);
-    clawRotationServo = hwMap.get(CRServo.class, IntakeConstants.CLAW_ROTATION_SERVO_ID);
-    clawRotationServo.setDirection(DcMotorSimple.Direction.REVERSE);
+    clawIntakeServo = new SimpleServo(hwMap, IntakeConstants.CLAW_INTAKE_SERVO_ID, minDegree, maxDegree);
+    intakeFlipServo = new SimpleServo(hwMap, IntakeConstants.INTAKE_FLIP_SERVO_ID, minDegree, maxDegree);
+    clawIntakeServo.setInverted(true);
+    clawRotationServo = new CRServo(hwMap, IntakeConstants.CLAW_ROTATION_SERVO_ID);
+    clawRotationServo.setInverted(true);
   }
 
   public void goToPositionFlip(final IntakePosition position) {
-    if (position.position >= Servo.MIN_POSITION && position.position <= Servo.MAX_POSITION) {
+    if (position.position >= minDegree && position.position <= maxDegree) {
       intakeFlipServo.setPosition(position.position);
     }
     goalPositionFlip = position;
@@ -46,11 +49,11 @@ public class Intake extends SubsystemBase { // This class was left mostly unchan
   }
 
   public void rotateIntake(double power) {
-    clawRotationServo.setPower(power);
+    clawRotationServo.set(power);
   }
 
   public void stopRotate() {
-    clawRotationServo.setPower(0);
+    clawRotationServo.stop();
   }
 
   public IntakePosition[] getGoalPositions() {
