@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.seattlesolvers.solverslib.command.SubsystemBase;
 import com.seattlesolvers.solverslib.controller.PIDController;
+import com.seattlesolvers.solverslib.hardware.motors.Motor;
+import com.seattlesolvers.solverslib.hardware.motors.MotorEx;
+
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Constants.*;
 
@@ -14,15 +16,15 @@ The PID is not tuned right now so is considered dangerous to run without tuning 
 The is also an option to turn PID on or off. */
 public class VerticalArm extends SubsystemBase {
 
-  private final DcMotor leftArm;
-  private final DcMotor rightArm;
+  private final MotorEx leftArm;
+  private final MotorEx rightArm;
   private final PIDController pidController;
   private ArmPosition goalPosition;
   private boolean isPidActive = false;
 
   public VerticalArm(final HardwareMap hwMap) {
-    leftArm = hwMap.dcMotor.get(Constants.ArmConstants.LEFT_ARM_ID);
-    rightArm = hwMap.dcMotor.get(Constants.ArmConstants.RIGHT_ARM_ID);
+    leftArm = new MotorEx(hwMap, ArmConstants.LEFT_ARM_ID);
+    rightArm = new MotorEx(hwMap, ArmConstants.RIGHT_ARM_ID);
 
     leftArm.; // Invert this motor
 
@@ -30,6 +32,7 @@ public class VerticalArm extends SubsystemBase {
     rightArm.; // Brake when power is set to zero?? Or should it do something else?
 
     resetEncoders();
+//    setRunWithoutEncoder();
 
     // Initialize PID controller with gains from constants
     pidController =
@@ -38,14 +41,14 @@ public class VerticalArm extends SubsystemBase {
   }
 
   private void resetEncoders() {
-    leftArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    rightArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    // setRunWithoutEncoder();
+    leftArm.stopAndResetEncoder();
+    rightArm.stopAndResetEncoder();
+//    setRunWithoutEncoder();
   }
 
   private void setRunWithoutEncoder() {
-    leftArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    rightArm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    leftArm.setRunMode(Motor.RunMode.RawPower);
+    rightArm.setRunMode(Motor.RunMode.RawPower);;
   }
 
   public void goToPosition(final ArmPosition position) {
@@ -114,7 +117,7 @@ public class VerticalArm extends SubsystemBase {
   public void setArmPowers(final double power) {
     // Disable PID when manually setting power
     isPidActive = false;
-    leftArm.setPower(power);
-    rightArm.setPower(power);
+    leftArm.setPower(power); // This is broken... How can we fix it?
+    rightArm.setPower(power); // This is broken... How can we fix it?
   }
 }
