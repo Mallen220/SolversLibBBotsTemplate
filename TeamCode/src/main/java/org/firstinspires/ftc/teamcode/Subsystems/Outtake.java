@@ -6,11 +6,6 @@ import com.seattlesolvers.solverslib.hardware.ServoEx;
 import com.seattlesolvers.solverslib.hardware.SimpleServo;
 
 public class Outtake extends SubsystemBase { // This class was left mostly unchanged. You might need to add more methods or change the existing ones to suit your needs.
-import org.firstinspires.ftc.teamcode.Constants.OuttakeConstants;
-import org.firstinspires.ftc.teamcode.Constants.OuttakePosition;
-
-public class Outtake extends SubsystemBase {
-
   private final double MAX_POSITION = 1;
   private final double MIN_POSITION = 0;
   private OuttakePosition goalPosition;

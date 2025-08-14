@@ -6,11 +6,9 @@ import com.seattlesolvers.solverslib.command.SubsystemBase;
 import com.seattlesolvers.solverslib.hardware.ServoEx;
 import com.seattlesolvers.solverslib.hardware.SimpleServo;
 
-public class OuttakeArm extends SubsystemBase { // This class was left mostly unchanged. You might need to add more methods or change the existing ones to suit your needs.
-import org.firstinspires.ftc.teamcode.Constants.OuttakeArmConstants;
-import org.firstinspires.ftc.teamcode.Constants.OuttakeArmPosition;
+import org.firstinspires.ftc.teamcode.Constants.*;
 
-public class OuttakeArm extends SubsystemBase {
+public class OuttakeArm extends SubsystemBase { // This class was left mostly unchanged. You might need to add more methods or change the existing ones to suit your needs.
 
   private OuttakeArmPosition goalPosition;
   private final ServoEx clawArm;
